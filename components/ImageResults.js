@@ -4,11 +4,8 @@ export class ImageResults extends Component {
 	render() {
 		
 		return (
-			<div>
-				<ul className="gifListWrapper" style={{
-					display: 'flex',
-					flexWrap: 'wrap',
-					listStyleType: 'none'}}>
+			<div className="imageResults">
+				<ul className="gifListWrapper">
 					{this.props.urls.map(url =>
 						<a href={url} target="_blank" key={url}>
 							<li>

@@ -6711,26 +6711,23 @@ var ImageResults = exports.ImageResults = function (_Component) {
 	}
 
 	_createClass(ImageResults, [{
-		key: 'render',
+		key: "render",
 		value: function render() {
 
 			return _react2.default.createElement(
-				'div',
-				null,
+				"div",
+				{ className: "imageResults" },
 				_react2.default.createElement(
-					'ul',
-					{ className: 'gifListWrapper', style: {
-							display: 'flex',
-							flexWrap: 'wrap',
-							listStyleType: 'none' } },
+					"ul",
+					{ className: "gifListWrapper" },
 					this.props.urls.map(function (url) {
 						return _react2.default.createElement(
-							'a',
-							{ href: url, target: '_blank', key: url },
+							"a",
+							{ href: url, target: "_blank", key: url },
 							_react2.default.createElement(
-								'li',
+								"li",
 								null,
-								_react2.default.createElement('img', { src: url, alt: '' })
+								_react2.default.createElement("img", { src: url, alt: "" })
 							)
 						);
 					})
@@ -9634,12 +9631,12 @@ var Main = exports.Main = function (_Component) {
 	}
 
 	_createClass(Main, [{
-		key: 'onChange',
-		value: function onChange(e) {
+		key: 'componentDidMount',
+		value: function componentDidMount() {
 			var _this2 = this;
 
-			var query = e.target.value || '';
-			fetch(url + query.replace(/ /g, '+')).then(function (res) {
+			var babyElephantsUrl = 'https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=baby+elephants';
+			fetch(babyElephantsUrl).then(function (res) {
 				return res.json();
 			}).then(function (json) {
 				return json.data;
@@ -9652,6 +9649,28 @@ var Main = exports.Main = function (_Component) {
 			});
 		}
 	}, {
+		key: 'onChange',
+		value: function onChange(e) {
+			var _this3 = this;
+
+			var query = e.target.value || '';
+			fetch(url + query.replace(/ /g, '+')).then(function (res) {
+				return res.json();
+			}).then(function (json) {
+				return json.data;
+			}).then(function (data) {
+				return data.map(function (obj) {
+					return obj.images.fixed_height.url;
+				});
+			}).then(function (urls) {
+				return _this3.setState({ urls: urls });
+			});
+
+			if (query == '') {
+				this.componentDidMount();
+			}
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(
@@ -9659,10 +9678,11 @@ var Main = exports.Main = function (_Component) {
 				{ className: 'mainWrapper' },
 				_react2.default.createElement(
 					'p',
-					null,
+					{ className: 'title' },
 					'SEARCH A GIF!'
 				),
-				_react2.default.createElement('input', { type: 'text', onChange: this.onChange }),
+				_react2.default.createElement('input', {
+					type: 'text', className: 'searchField', onChange: this.onChange, autoFocus: true }),
 				_react2.default.createElement(_ImageResults2.default, { urls: this.state.urls })
 			);
 		}
@@ -9751,7 +9771,7 @@ exports = module.exports = __webpack_require__(86)(undefined);
 
 
 // module
-exports.push([module.i, "body #app .mainWrapper{text-align:center}", ""]);
+exports.push([module.i, "body{max-width:1200px;margin:0 auto;background:#481b89}body #app .mainWrapper{color:#fff;text-align:center;margin:70px 0}body #app .mainWrapper p.title{margin:20px 0;font-family:'Open Sans',sans-serif;font-weight:600;font-size:42px;-webkit-animation:color-change 5s infinite;-moz-animation:color-change 5s infinite;-o-animation:color-change 5s infinite;-ms-animation:color-change 5s infinite;animation:color-change 5s infinite}body #app .mainWrapper input.searchField{border:1px solid #481b89;width:94%;height:45px;font-size:32px;background:#fff;padding:10px 30px;color:#481b89}@-webkit-keyframes color-change{0%{color:#fff}30%{color:#5165b1}60%{color:#3acee9}100%{color:#fff}}@-moz-keyframes color-change{0%{color:#fff}30%{color:#5165b1}60%{color:#3acee9}100%{color:#fff}}@-ms-keyframes color-change{0%{color:#fff}30%{color:#5165b1}60%{color:#3acee9}100%{color:#fff}}@-o-keyframes color-change{0%{color:#fff}30%{color:#5165b1}60%{color:#3acee9}100%{color:#fff}}@keyframes color-change{0%{color:#fff}30%{color:#5165b1}60%{color:#3acee9}100%{color:#fff}}body #app .mainWrapper .imageResults ul.gifListWrapper{padding:0;justify-content:space-between;display:flex;flex-wrap:wrap;list-style-type:none}body #app .mainWrapper .imageResults ul.gifListWrapper a li{margin:10px}", ""]);
 
 // exports
 

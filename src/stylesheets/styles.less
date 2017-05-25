@@ -1,7 +1,82 @@
+@indigo: #481b89;
+@blue2:#5165b1;
+@blue: #3acee9;
+@white: #fff;
+
 body {
+	max-width: 1200px;
+	margin: 0 auto;
+	background: @indigo;
+
 	#app {
 		.mainWrapper {
+			color: @white;
 			text-align: center;
+			margin: 70px 0;
+
+			p.title {
+				margin: 20px 0;
+				font-family: 'Open Sans', sans-serif;
+				font-weight: 600;
+				font-size: 42px;
+				-webkit-animation: color-change 5s infinite;
+				-moz-animation: color-change 5s infinite;
+				-o-animation: color-change 5s infinite;
+				-ms-animation: color-change 5s infinite;
+				animation: color-change 5s infinite;
+			}
+			input.searchField {
+				border: 1px solid @indigo;
+				width: 94%;
+				height: 45px;
+				font-size: 32px;
+				background: @white;
+				padding: 10px 30px;
+				color: @indigo;
+			}
+			@-webkit-keyframes color-change {
+				0% { color: @white; }
+				30% { color: @blue2; }
+				60% { color: @blue; }
+				100% { color: @white; }
+			}
+			@-moz-keyframes color-change {
+				0% { color: @white; }
+				30% { color: @blue2; }
+				60% { color: @blue; }
+				100% { color: @white; }
+			}
+			@-ms-keyframes color-change {
+				0% { color: @white; }
+				30% { color: @blue2; }
+				60% { color: @blue; }
+				100% { color: @white; }
+			}
+			@-o-keyframes color-change {
+				0% { color: @white; }
+				30% { color: @blue2; }
+				60% { color: @blue; }
+				100% { color: @white; }
+			}
+			@keyframes color-change {
+				0% { color: @white; }
+				30% { color: @blue2; }
+				60% { color: @blue; }
+				100% { color: @white; }
+			}
+
+			.imageResults {
+				ul.gifListWrapper {
+					padding: 0;
+					justify-content: space-between;
+					display: flex;
+					flex-wrap: wrap;
+					list-style-type: none;
+
+					a li { margin: 10px; }
+				}
+			}
+
 		}
 	}
 }

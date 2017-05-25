@@ -14,6 +14,15 @@ export class Main extends Component {
 		};
 	}
 
+	componentDidMount() {
+		const babyElephantsUrl = 'https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=baby+elephants'
+		fetch(babyElephantsUrl)
+			.then(res => res.json())
+			.then(json => json.data)
+			.then(data => data.map(obj => obj.images.fixed_height.url))
+			.then(urls => this.setState({urls: urls}))
+	}
+
     onChange(e) {
        const query = e.target.value || '';
        fetch(url + query.replace(/ /g, '+'))
@@ -22,15 +31,19 @@ export class Main extends Component {
        	.then(data => data.map(obj => obj.images.fixed_height.url))
        	.then(urls => this.setState({urls: urls}));
 
-
-
+       	if (query == '') {
+       		this.componentDidMount();
+       	}
     }
+
+   
 
 	render() {
 		return (
 			<div className="mainWrapper">
-				<p>SEARCH A GIF!</p>
-				<input type="text" onChange={this.onChange} />
+				<p className="title">SEARCH A GIF!</p>
+				<input
+					type="text" className="searchField" onChange={this.onChange} autoFocus />
 				<ImageResults urls={this.state.urls} />
 			</div>
 		);
