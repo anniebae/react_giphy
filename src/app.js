@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-import One from '../components/One'
+import Main from '../components/Main'
 import ImageResults from '../components/ImageResults'
-import Gif from '../components/Gif'
 
 class App extends Component {
 	render() {
 		return(
 			<div>
-				<One />
+				<Main />
 			</div>
 		)
 	}

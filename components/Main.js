@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import ImageResults from '../components/ImageResults';
 
+import css from '../src/stylesheets/styles.css'
+
 const url = 'https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=';
 
-export class One extends Component {
+export class Main extends Component {
 	constructor(props) {
 		super(props);
 		this.onChange = this.onChange.bind(this)
@@ -26,7 +28,8 @@ export class One extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className="mainWrapper">
+				<p>SEARCH A GIF!</p>
 				<input type="text" onChange={this.onChange} />
 				<ImageResults urls={this.state.urls} />
 			</div>
@@ -34,4 +37,4 @@ export class One extends Component {
 	}
 }
 
-export default One;
+export default Main;

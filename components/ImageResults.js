@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import Gif from './Gif';
 
 export class ImageResults extends Component {
 	render() {
@@ -12,9 +11,9 @@ export class ImageResults extends Component {
 					listStyleType: 'none'}}>
 					{this.props.urls.map(url =>
 						<a href={url} target="_blank" key={url}>
-						<li>
-							<img src={url} alt=""/>
-						</li>
+							<li>
+								<img src={url} alt=""/>
+							</li>
 						</a>
 					)}
 				</ul>
