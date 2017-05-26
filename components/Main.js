@@ -43,7 +43,7 @@ export class Main extends Component {
 			<div className="mainWrapper">
 				<p className="title">SEARCH A GIF!</p>
 				<input
-					type="text" className="searchField" onChange={this.onChange} autoFocus />
+					type="text" className="searchField" onChange={this.onChange} placeholder="baby elephants" autoFocus />
 				<ImageResults urls={this.state.urls} />
 			</div>
 		);
